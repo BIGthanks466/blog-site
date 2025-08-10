@@ -1,31 +1,59 @@
+// src/blog.js
 import React from "react";
-import { Link } from "react-router-dom";
-import posts from "./setupPosts";
 import "./blog.css";
+
+const posts = [
+  {
+    id: 1,
+    title: "Welcome to My Blog",
+    excerpt: "This is the first post on my blog built with React.",
+    date: "2025-08-10",
+    tag: "Intro",
+  },
+  {
+    id: 2,
+    title: "Why I Love React",
+    excerpt:
+      "React makes building user interfaces a breeze. JSX is simple and powerful.",
+    date: "2025-08-08",
+    tag: "React",
+  },
+  {
+    id: 3,
+    title: "Learning JavaScript",
+    excerpt:
+      "Understanding variables, functions, and loops is the key to mastering JS.",
+    date: "2025-08-05",
+    tag: "JavaScript",
+  },
+];
 
 export default function Blog() {
   return (
-    <div className="page">
+    <main className="blog-wrap">
       <h1>📝 Blog Posts</h1>
 
-      {posts.map((p) => (
-        <article key={p.id} className="blog-post">
-          <div className="blog-meta">
-            <span role="img" aria-label="emoji">{p.emoji}</span>{" "}
-            <span>{p.category}</span>
-          </div>
+      <section className="grid">
+        {posts.map((p) => (
+          <article key={p.id} className="card">
+            <header className="card-head">
+              <span className="pill">{p.tag}</span>
+              <time className="date">
+                {new Date(p.date).toLocaleDateString()}
+              </time>
+            </header>
 
-          <h3>{p.title}</h3>
+            <h2 className="title">{p.title}</h2>
+            <p className="excerpt">{p.excerpt}</p>
 
-          <img src={p.image} alt={p.title} className="blog-image" />
-
-          <p>{p.content.substring(0, 140)}...</p>
-
-          <Link to={`/post/${p.id}`} className="read-more">
-            Read more →
-          </Link>
-        </article>
-      ))}
-    </div>
+            <div className="actions">
+              <a className="btn read" href="#">
+                Read more →
+              </a>
+            </div>
+          </article>
+        ))}
+      </section>
+    </main>
   );
 }
