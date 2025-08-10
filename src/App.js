@@ -1,11 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./Navbar";
-import Home from "./Home";   // Make sure this matches file name exactly
-import Blog from "./blog";
-import About from "./about";
-import AlienHub from "./alien/AlienHub";
-import AlienDetail from "./alien/AlienDetail";
+
+import Navbar from "./Navbar";          // file: src/Navbar.js
+import Home   from "./Home";            // file: src/Home.js
+import Blog   from "./blog";            // file: src/blog.js
+import About  from "./about";           // file: src/about.js
+
+import AlienHub    from "./alien/AlienHub";       // file: src/alien/AlienHub.js
+import AlienDetail from "./alien/AlienDetail";    // file: src/alien/AlienDetail.js
 
 export default function App() {
   return (
