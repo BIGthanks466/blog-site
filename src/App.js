@@ -1,35 +1,23 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import Home from "./Home";   // Make sure this matches file name exactly
+import Blog from "./blog";
+import About from "./about";
+import AlienHub from "./alien/AlienHub";
+import AlienDetail from "./alien/AlienDetail";
 
-function Blog() {
-  const posts = [
-    {
-      id: 1,
-      title: "Welcome to My Blog",
-      content: "This is the first post on my blog built with React."
-    },
-    {
-      id: 2,
-      title: "Why I Love React",
-      content: "React makes building user interfaces a breeze. JSX is simple and powerful."
-    },
-    {
-      id: 3,
-      title: "Learning JavaScript",
-      content: "Understanding variables, functions, and loops is the key to mastering JS."
-    }
-  ];
-
+export default function App() {
   return (
-    <div style={{ padding: '40px', fontFamily: 'Arial' }}>
-      <h1>Blog Posts</h1>
-      {posts.map(post => (
-        <div key={post.id} style={{ marginBottom: '30px' }}>
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-        </div>
-      ))}
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/signals" element={<AlienHub />} />
+        <Route path="/signals/:id" element={<AlienDetail />} />
+      </Routes>
+    </Router>
   );
 }
-
-export default Blog;

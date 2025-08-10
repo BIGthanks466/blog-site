@@ -1,33 +1,31 @@
-function Blog() {
-  const posts = [
-    {
-      id: 1,
-      title: "Welcome to My Blog",
-      content: "This is the first post on my blog built with React."
-    },
-    {
-      id: 2,
-      title: "Why I Love React",
-      content: "React makes building user interfaces a breeze. JSX is simple and powerful."
-    },
-    {
-      id: 3,
-      title: "Learning JavaScript",
-      content: "Understanding variables, functions, and loops is the key to mastering JS."
-    }
-  ];
+import React from "react";
+import { Link } from "react-router-dom";
+import posts from "./setupPosts";
+import "./blog.css";
 
+export default function Blog() {
   return (
-    <div style={{ padding: '40px', fontFamily: 'Arial' }}>
-      <h1>Blog Posts</h1>
-      {posts.map(post => (
-        <div key={post.id} style={{ marginBottom: '30px' }}>
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-        </div>
+    <div className="page">
+      <h1>📝 Blog Posts</h1>
+
+      {posts.map((p) => (
+        <article key={p.id} className="blog-post">
+          <div className="blog-meta">
+            <span role="img" aria-label="emoji">{p.emoji}</span>{" "}
+            <span>{p.category}</span>
+          </div>
+
+          <h3>{p.title}</h3>
+
+          <img src={p.image} alt={p.title} className="blog-image" />
+
+          <p>{p.content.substring(0, 140)}...</p>
+
+          <Link to={`/post/${p.id}`} className="read-more">
+            Read more →
+          </Link>
+        </article>
       ))}
     </div>
   );
 }
-
-export default Blog

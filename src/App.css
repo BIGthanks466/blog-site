@@ -1,38 +1,141 @@
-.App {
-  text-align: center;
+/* ===== Theme (colors, spacing, fonts) ===== */
+:root{
+  --bg-1:#0f172a;        /* page background */
+  --bg-2:#111827;        /* card/nav */
+  --brand:#60a5fa;       /* accents */
+  --brand-2:#34d399;     /* hover/secondary */
+  --text:#e5e7eb;        /* main text */
+  --muted:#94a3b8;       /* secondary text */
+  --ring:rgba(255,255,255,.08);
+
+  --radius:14px;
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ===== Base ===== */
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; }
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #1f2937 0%, transparent 60%),
+    radial-gradient(900px 600px at 110% 10%, #0b1020 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* smooth page mount */
+@keyframes fadeIn { from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
+
+.page{
+  width: min(1100px, 92%);
+  margin: 90px auto 60px; /* space below sticky navbar */
+  animation: fadeIn .35s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Headings & copy */
+h1,h2,h3{
+  margin: 0 0 .6rem;
+  line-height: 1.2;
+}
+h1{ font-size: clamp(28px, 2.6vw, 36px); }
+h2{ font-size: clamp(22px, 2.2vw, 28px); }
+p{  color: var(--muted); font-size: 16px; line-height: 1.7; }
+
+/* Cards / posts list (optional if you already have blog.css) */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  border:1px solid var(--ring);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Links */
+a{ color: var(--brand); text-decoration: none; }
+a:hover{ color: var(--brand-2); text-decoration: underline; }
+
+/* Small helpers */
+.center { display:grid; place-items:center; }
+.muted { color: var(--muted); }
+
+/* Mobile tweaks */
+@media (max-width:720px){
+  .page{ width: 92%; margin-top: 80px; }
+}/* ===== Layout helpers ===== */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
+.feature{ grid-column: span 4; }
+.post-card{ grid-column: span 6; }
+@media (max-width: 960px){
+  .feature{ grid-column: span 6; }
+  .post-card{ grid-column: span 12; }
+}
+@media (max-width: 640px){
+  .feature, .post-card{ grid-column: span 12; }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ===== Hero ===== */
+.hero{
+  padding: 28px;
+  display: grid;
+  gap: 14px;
 }
+.hero-actions{ display:flex; gap:10px; flex-wrap: wrap; }
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--ring);
+  text-decoration:none; cursor:pointer; transition:.2s ease;
+}
+.btn-primary{ background: var(--brand); color:#081018; border-color: transparent; }
+.btn-primary:hover{ filter: brightness(1.05); transform: translateY(-1px); }
+.btn-ghost{ color: var(--text); background: transparent; }
+.btn-ghost:hover{ background: rgba(255,255,255,.06); }
+.btn-link{ color: var(--brand); padding: 0; border:none; background:transparent; }
+.btn-link:hover{ color: var(--brand-2); text-decoration: underline; }
+
+/* ===== Post cards ===== */
+.thumb-wrap{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border:1px solid var(--ring);
+  aspect-ratio: 16/9;
+  margin-bottom: 12px;
+}
+.thumb{
+  width:100%; height:100%; object-fit: cover;
+  transform: scale(1.02);
+  transition: transform .35s ease;
+}
+.post-card:hover .thumb{ transform: scale(1.07); }
+
+.badge{
+  position: absolute;
+  left: 10px; top: 10px;
+  background: rgba(0,0,0,.55);
+  border:1px solid var(--ring);
+  color:#fff; padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  display:flex; align-items:center; gap:6px;
+  backdrop-filter: blur(6px);
+}
+.badge .emoji{ font-size: 14px; }
+
+.post-title{ margin: 6px 0 4px; font-size: 20px; }
+.meta{
+  display:flex; gap:8px; align-items:center;
+  color: var(--muted); font-size: 13px; margin-top: 4px;
+}
+.actions{ margin-top: 8px; }

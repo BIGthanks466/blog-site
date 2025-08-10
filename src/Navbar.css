@@ -1,0 +1,97 @@
+/* ===== Navbar ===== */
+:root{
+  --nav-height: 64px;
+}
+
+/* sticky, frosted bar */
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-bottom: 1px solid var(--ring);
+  backdrop-filter: blur(8px);
+}
+
+/* brand */
+.navbar-logo{
+  color: var(--text);
+  font-weight: 700;
+  font-size: 18px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+/* links row */
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a{
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: background .2s ease, color .2s ease, transform .15s ease;
+}
+.nav-links a:hover{
+  background: rgba(255,255,255,.06);
+  color: var(--brand-2);
+  transform: translateY(-1px);
+}
+
+/* active route (NavLink adds .active) */
+.nav-links a.active{
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  color: var(--brand);
+  border: 1px solid var(--ring);
+}
+
+/* Mobile menu button */
+.menu-toggle{
+  display: none;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* ===== Mobile layout ===== */
+@media (max-width: 720px){
+  .menu-toggle{ display: inline-flex; }
+  .nav-links{
+    position: fixed;
+    top: var(--nav-height);
+    right: 12px;
+    left: 12px;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(17,24,39,.95), rgba(15,23,42,.95));
+    border: 1px solid var(--ring);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: var(--shadow);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all .2s ease;
+  }
+  .nav-links.open{
+    max-height: 240px;
+    opacity: 1;
+    transform: none;
+  }
+}
