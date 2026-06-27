@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import './Blog.css';
+import './blog.css';
 import { Link } from 'react-router-dom';
 import posts from './posts.json';
 

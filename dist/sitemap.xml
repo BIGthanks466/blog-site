@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+<loc>http://localhost:5173/</loc>
+</url>
+
+<url>
+<loc>http://localhost:5173/blog</loc>
+</url>
+
+<url>
+<loc>http://localhost:5173/blog/gold-micro-3</loc>
+</url>
+
+<url>
+<loc>http://localhost:5173/blog/alien-signals</loc>
+</url>
+
+<url>
+<loc>http://localhost:5173/blog/neon-cities</loc>
+</url>
+
+</urlset>
