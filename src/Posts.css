@@ -1,0 +1,66 @@
+.post-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.post-card {
+  background: rgba(20, 20, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 40px;
+  width: 400px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.post-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.4);
+}
+
+.post-card h2 {
+  font-size: 1.8rem;
+  color: #00e0ff;
+  margin-bottom: 10px;
+}
+
+.post-date {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 15px;
+}
+
+.post-content {
+  font-size: 1rem;
+  color: #ddd;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* ✅ Back Button */
+.back-button {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  background: linear-gradient(90deg, #00e0ff, #8a2be2);
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.back-button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+}

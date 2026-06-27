@@ -1,0 +1,27 @@
+/* src/PageTransition.css */
+
+.page-transition {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  transition: opacity 220ms ease, transform 220ms ease, filter 220ms ease;
+  will-change: opacity, transform, filter;
+}
+
+.page-transition.in {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+.page-transition.out {
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(4px);
+}
+
+/* Inner wrapper just to keep layout stable */
+.page-transition-inner {
+  width: 100%;
+  min-height: 100vh;
+}

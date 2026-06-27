@@ -1,0 +1,63 @@
+.page-container {
+  padding: 40px 20px;
+  color: #fff;
+  background: #111;
+  min-height: 80vh;
+}
+
+.page-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #61dafb;
+}
+
+.page-container p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.highlight {
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+/* Blog List */
+.blog-list {
+  list-style: none;
+  padding: 0;
+}
+
+.blog-list li {
+  margin: 10px 0;
+}
+
+.blog-list a {
+  color: #61dafb;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.blog-list a:hover {
+  color: #ffcc00;
+}
+
+/* Contact List */
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-list li {
+  margin: 8px 0;
+}
+
+.contact-list a {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}

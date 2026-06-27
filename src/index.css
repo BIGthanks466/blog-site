@@ -1,13 +1,311 @@
+/* src/index.css */
+
+/* Reset & Body */
 body {
+  background: #000; /* deep black background */
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Floating Stars Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  animation: starfield 60s linear infinite;
+  z-index: -1; /* stays behind everything */
+  opacity: 0.6;
+}
+
+@keyframes starfield {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-500px, -500px);
+  }
+}
+
+/* Supreme Glow for Title */
+.home-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: #00eaff;
+  text-shadow: 
+    0 0 10px #00eaff,
+    0 0 20px #00eaff,
+    0 0 40px #00eaff,
+    0 0 80px #00eaff;
+  animation: pulseGlow 2.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    text-shadow: 
+      0 0 10px #00eaff,
+      0 0 20px #00eaff,
+      0 0 40px #00eaff;
+  }
+  to {
+    text-shadow: 
+      0 0 20px #00eaff,
+      0 0 40px #00eaff,
+      0 0 80px #00eaff,
+      0 0 120px #00eaff;
+  }
+}
+
+/* Subtitle */
+.home-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 15px auto;
+  line-height: 1.6;
+  max-width: 700px;
+  color: #ccc;
+}
+
+.highlight {
+  color: #ffd700;
+  font-weight: bold;
+  text-shadow: 0 0 5px #ffd700, 0 0 15px #ffae00;
+}
+
+/* Buttons */
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-btn {
+  background: #00ffcc;
+  color: #000;
+  box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+}
+
+.github-btn {
+  background: #ff9800;
+  color: #000;
+  box-shadow: 0 0 20px #ff9800, 0 0 40px #ff9800;
+}
+
+.contact-btn {
+  background: #2196f3;
+  color: #fff;
+  box-shadow: 0 0 20px #2196f3, 0 0 40px #2196f3;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Navbar Supreme Glow */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.navbar-logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #00eaff;
+  text-shadow: 0 0 15px #00eaff, 0 0 30px #00eaff;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 25px #00eaff, 0 0 50px #00eaff;
+}
+
+/* Navbar Links */
+.navbar-links .nav-link {
+  text-decoration: none;
+  color: #eee;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar-links .nav-link:hover {
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 30px #00eaff;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2.2rem;
+  }
+  .home-subtitle {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+  .home-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+/* Cosmic Background for the whole app */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at 20% 20%, rgba(0, 0, 80, 0.9), rgba(0, 0, 20, 1)),
+              url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Smooth scroll effect */
+html {
+  scroll-behavior: smooth;
+}/* Cosmic Background for the whole app */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at 20% 20%, rgba(0, 0, 80, 0.9), rgba(0, 0, 20, 1)),
+              url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Smooth scroll effect */
+html {
+  scroll-behavior: smooth;
+}/* ===== FITTED FEATURED SIGNAL ===== */
+
+.home-highlight {
+  margin-top: 22px;
+  padding: 22px;
+  border-radius: 26px;
+}
+
+.highlight-content {
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.highlight-left h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+  line-height: 1.12;
+}
+
+.highlight-left p {
+  font-size: 0.97rem;
+  line-height: 1.7;
+  max-width: 95%;
+}
+
+.highlight-right {
+  padding: 16px;
+  border-radius: 20px;
+}
+
+.signal-meter p {
+  margin: 0 0 8px;
+  font-size: 0.8rem;
+}
+
+.meter-bar {
+  height: 10px;
+  margin-bottom: 12px;
+}
+
+.signal-stats {
+  gap: 10px;
+}
+
+.signal-stats div {
+  font-size: 0.9rem;
+}
+
+.highlight-actions {
+  margin-top: 18px;
+  gap: 10px;
+}
+
+.highlight-actions .hero-btn {
+  min-width: 180px;
+  padding: 13px 18px;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 900px) {
+  .highlight-content {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-left p {
+    max-width: 100%;
+  }
+
+  .highlight-right {
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-highlight {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .highlight-left h2 {
+    font-size: 1.7rem;
+  }
+
+  .highlight-actions .hero-btn {
+    width: 100%;
+    min-width: unset;
+  }
 }

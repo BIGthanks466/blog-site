@@ -1,20 +1,160 @@
-.alien-wrap { max-width: 1100px; margin: 40px auto; padding: 0 16px; color: #e6eaf2; }
-.alien-hero { background: radial-gradient(1200px 400px at 10% -20%, rgba(88,125,255,0.18), transparent);
-  padding: 24px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; }
-.alien-hero h1 { margin: 0 0 6px; }
-.muted { opacity: .75; }
-.actions { display: flex; gap: 12px; margin-top: 12px; }
-.actions button, .actions .secondary, .view, .secondary {
-  padding: 10px 14px; border-radius: 10px; text-decoration: none; border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.06); color: inherit; cursor: pointer; display: inline-block;
+.signals-container {
+  padding: 3rem;
+  text-align: center;
+  color: white;
+  font-family: "Orbitron", sans-serif;
 }
-.actions .secondary, .secondary { background: transparent; }
-.grid { list-style: none; padding: 0; margin: 24px 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-.card { background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 16px; }
-.meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; opacity: .8; margin-bottom: 8px; }
-.header { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; opacity: .85; }
-.raw { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: rgba(255,255,255,.04);
-  padding: 10px; border-radius: 10px; overflow-x: auto; }
-.translated { font-size: 18px; margin: 10px 0; }
-.interp { opacity: .9; }
-.view { margin-top: 6px; }
+
+.signals-title {
+  font-size: 2.5rem;
+  color: #0ff;
+  text-shadow: 0 0 15px #0ff, 0 0 40px #0ff;
+  margin-bottom: 1rem;
+}
+
+.signals-sub {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+.signals-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.signal-btn {
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #fff;
+}
+
+.generate-btn {
+  background: linear-gradient(90deg, #0ff, #09f);
+  box-shadow: 0 0 15px #0ff, 0 0 40px #09f;
+  animation: pulse 2s infinite;
+}
+
+.back-btn {
+  background: linear-gradient(90deg, #f40, #c00);
+  box-shadow: 0 0 15px #f40, 0 0 40px #c00;
+}
+
+.generate-btn:hover,
+.back-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Signal Cards */
+.signals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.signal-card {
+  background: rgba(20, 20, 20, 0.85);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px solid #0ff;
+  box-shadow: 0 0 15px #0ff;
+  transition: 0.3s;
+}
+
+.signal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px #0ff, 0 0 50px #09f;
+}
+
+.signal-card h2 {
+  margin-bottom: 0.8rem;
+  color: #0ff;
+}
+
+.binary {
+  font-family: monospace;
+  color: #0f0;
+  margin: 0.5rem 0;
+  text-shadow: 0 0 8px #0f0;
+}
+
+.interpretation {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* No Signal */
+.no-signal {
+  color: #888;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #0ff; }
+  50% { box-shadow: 0 0 25px #0ff, 0 0 50px #09f; }
+  100% { box-shadow: 0 0 10px #0ff; }
+}/* 🌐 Holographic Grid Overlay */
+.holo-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      rgba(0, 255, 200, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(0, 255, 200, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+  pointer-events: none;
+  animation: gridMove 8s linear infinite;
+}
+
+@keyframes gridMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 40px;
+  }
+}
+
+/* ✨ Lens Flare Sweep */
+.lens-flare {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  mix-blend-mode: screen;
+  animation: flareMove 12s ease-in-out infinite;
+  z-index: 5;
+}
+
+@keyframes flareMove {
+  0%, 90% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

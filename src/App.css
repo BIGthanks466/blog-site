@@ -1,141 +1,105 @@
-/* ===== Theme (colors, spacing, fonts) ===== */
+/* src/App.css */
+
+/* Make sure the app always has space for the fixed top nav */
 :root{
-  --bg-1:#0f172a;        /* page background */
-  --bg-2:#111827;        /* card/nav */
-  --brand:#60a5fa;       /* accents */
-  --brand-2:#34d399;     /* hover/secondary */
-  --text:#e5e7eb;        /* main text */
-  --muted:#94a3b8;       /* secondary text */
-  --ring:rgba(255,255,255,.08);
-
-  --radius:14px;
-  --shadow: 0 10px 30px rgba(0,0,0,.25);
+  --nav-h: 92px;
 }
 
-/* ===== Base ===== */
-* { box-sizing: border-box; }
-html,body,#root { height: 100%; }
 body{
-  margin:0;
-  color:var(--text);
-  background:
-    radial-gradient(1200px 600px at 10% -10%, #1f2937 0%, transparent 60%),
-    radial-gradient(900px 600px at 110% 10%, #0b1020 0%, transparent 55%),
-    linear-gradient(180deg, var(--bg-1), var(--bg-2));
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
 }
 
-/* smooth page mount */
-@keyframes fadeIn { from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
+.top-nav{
+  position: sticky;   /* stays visible while scrolling */
+  top: 0;
+  z-index: 999;
 
-.page{
-  width: min(1100px, 92%);
-  margin: 90px auto 60px; /* space below sticky navbar */
-  animation: fadeIn .35s ease;
-}
-
-/* Headings & copy */
-h1,h2,h3{
-  margin: 0 0 .6rem;
-  line-height: 1.2;
-}
-h1{ font-size: clamp(28px, 2.6vw, 36px); }
-h2{ font-size: clamp(22px, 2.2vw, 28px); }
-p{  color: var(--muted); font-size: 16px; line-height: 1.7; }
-
-/* Cards / posts list (optional if you already have blog.css) */
-.card{
-  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-  border:1px solid var(--ring);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 20px;
-}
-
-/* Links */
-a{ color: var(--brand); text-decoration: none; }
-a:hover{ color: var(--brand-2); text-decoration: underline; }
-
-/* Small helpers */
-.center { display:grid; place-items:center; }
-.muted { color: var(--muted); }
-
-/* Mobile tweaks */
-@media (max-width:720px){
-  .page{ width: 92%; margin-top: 80px; }
-}/* ===== Layout helpers ===== */
-.grid{
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 18px;
-}
-.feature{ grid-column: span 4; }
-.post-card{ grid-column: span 6; }
-@media (max-width: 960px){
-  .feature{ grid-column: span 6; }
-  .post-card{ grid-column: span 12; }
-}
-@media (max-width: 640px){
-  .feature, .post-card{ grid-column: span 12; }
+
+  padding: 16px 22px;
+  min-height: var(--nav-h);
+
+  /* futuristic glass bar */
+  background: rgba(6, 10, 24, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(140, 190, 255, 0.18);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
 }
 
-/* ===== Hero ===== */
-.hero{
-  padding: 28px;
-  display: grid;
-  gap: 14px;
+/* left side brand */
+.brand-wrap{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1;
 }
-.hero-actions{ display:flex; gap:10px; flex-wrap: wrap; }
 
-/* ===== Buttons ===== */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid var(--ring);
-  text-decoration:none; cursor:pointer; transition:.2s ease;
+.brand{
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: rgba(235,245,255,0.95);
+  text-shadow: 0 0 18px rgba(140,190,255,0.35);
 }
-.btn-primary{ background: var(--brand); color:#081018; border-color: transparent; }
-.btn-primary:hover{ filter: brightness(1.05); transform: translateY(-1px); }
-.btn-ghost{ color: var(--text); background: transparent; }
-.btn-ghost:hover{ background: rgba(255,255,255,.06); }
-.btn-link{ color: var(--brand); padding: 0; border:none; background:transparent; }
-.btn-link:hover{ color: var(--brand-2); text-decoration: underline; }
 
-/* ===== Post cards ===== */
-.thumb-wrap{
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius);
-  border:1px solid var(--ring);
-  aspect-ratio: 16/9;
-  margin-bottom: 12px;
-}
-.thumb{
-  width:100%; height:100%; object-fit: cover;
-  transform: scale(1.02);
-  transition: transform .35s ease;
-}
-.post-card:hover .thumb{ transform: scale(1.07); }
-
-.badge{
-  position: absolute;
-  left: 10px; top: 10px;
-  background: rgba(0,0,0,.55);
-  border:1px solid var(--ring);
-  color:#fff; padding: 6px 10px;
-  border-radius: 999px;
+.brand-sub{
   font-size: 12px;
-  display:flex; align-items:center; gap:6px;
-  backdrop-filter: blur(6px);
+  letter-spacing: 0.8px;
+  color: rgba(190, 220, 255, 0.75);
 }
-.badge .emoji{ font-size: 14px; }
 
-.post-title{ margin: 6px 0 4px; font-size: 20px; }
-.meta{
-  display:flex; gap:8px; align-items:center;
-  color: var(--muted); font-size: 13px; margin-top: 4px;
+/* right side nav buttons */
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap; /* so it doesn't break on smaller screens */
 }
-.actions{ margin-top: 8px; }
+
+.nav-link{
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+
+  padding: 10px 14px;
+  border-radius: 14px;
+
+  color: rgba(210, 230, 255, 0.75);
+  background: rgba(10, 18, 46, 0.35);
+  border: 1px solid rgba(140, 190, 255, 0.18);
+
+  box-shadow: inset 0 0 0 1px rgba(140,190,255,0.06);
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nav-link:hover{
+  transform: translateY(-1px);
+  color: rgba(240, 248, 255, 0.95);
+  background: rgba(20, 40, 90, 0.38);
+  box-shadow: 0 0 22px rgba(120, 180, 255, 0.22);
+}
+
+.nav-link.active{
+  color: rgba(255,255,255,0.98);
+  background: linear-gradient(135deg, rgba(60,140,255,0.35), rgba(180,90,255,0.22));
+  border: 1px solid rgba(160, 210, 255, 0.35);
+  box-shadow: 0 0 26px rgba(120,180,255,0.28);
+}
+
+/* Push all pages down a bit so they don't sit under the nav */
+main{
+  padding-top: 18px;
+}
+
+/* Optional: if your pages are wrapped in something else */
+.page,
+.page-wrap,
+.app-page{
+  padding-top: 18px;
+}

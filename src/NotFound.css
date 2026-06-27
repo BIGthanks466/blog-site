@@ -1,0 +1,37 @@
+.notfound-container {
+  text-align: center;
+  padding: 80px 20px;
+  color: #fff;
+  background: #111;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notfound-container h1 {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  color: #61dafb;
+}
+
+.notfound-container p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.home-link {
+  color: #61dafb;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid #61dafb;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.home-link:hover {
+  background: #61dafb;
+  color: #111;
+}
